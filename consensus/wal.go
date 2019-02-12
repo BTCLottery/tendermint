@@ -113,6 +113,7 @@ func (wal *baseWAL) OnStart() error {
 }
 
 func (wal *baseWAL) OnStop() {
+	wal.group.Flush()
 	wal.group.Stop()
 	wal.group.Close()
 }
