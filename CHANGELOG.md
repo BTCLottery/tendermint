@@ -14,11 +14,11 @@
 
 - [mempool] [\#3](https://github.com/mattkanwisher/tendermint/pull/3) Evict txs from the mempool if they haven't been committed after `N` blocks
 
-## Backport from v0.30.1
+## Backported from v0.30.1
 
 ### BUG FIXES:
 
-- [consensus] [\#3295](https://github.com/tendermint/tendermint/issues/3295) Flush WAL on stop to prevent data corruption during graceful shutdown.
+- [consensus] [\#3297](https://github.com/tendermint/tendermint/pull/3297) Flush WAL on stop to prevent data corruption during graceful shutdown.
 - [consensus] [\#3310](https://github.com/tendermint/tendermint/pull/3310) Fix possible halt by resetting TriggeredTimeoutPrecommit before starting next height.
 - [p2p] [\#3347](https://github.com/tendermint/tendermint/pull/3347) Secret connection check all zeroes
 - [p2p] [\#3321](https://github.com/tendermint/tendermint/pull/3321) Authenticate a peer against its NetAddress.ID when dialing
