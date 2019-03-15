@@ -19,36 +19,37 @@
 ### BUG FIXES:
 
 - [consensus] [\#3295](https://github.com/tendermint/tendermint/issues/3295) Flush WAL on stop to prevent data corruption during graceful shutdown.
-- [consensus] [\#3302](https://github.com/tendermint/tendermint/issues/3302) Fix possible halt by resetting TriggeredTimeoutPrecommit before starting next height.
-- [p2p] [\#3010](https://github.com/tendermint/tendermint/issues/3010#issuecomment-464287627) Authenticate a peer against its NetAddress.ID when dialing.
+- [consensus] [\#3310](https://github.com/tendermint/tendermint/pull/3310) Fix possible halt by resetting TriggeredTimeoutPrecommit before starting next height.
+- [p2p] [\#3347](https://github.com/tendermint/tendermint/pull/3347) Secret connection check all zeroes
+- [p2p] [\#3321](https://github.com/tendermint/tendermint/pull/3321) Authenticate a peer against its NetAddress.ID when dialing
 
-## Backport from v0.29.2
+## Backported from v0.29.2
 
 ### BUG FIXES:
 
-- [node] [\#3186](https://github.com/tendermint/tendermint/issues/3186) EventBus and indexerService should be started before first block (for replay last block on handshake) execution (@ackratos)
-- [p2p] [\#3232](https://github.com/tendermint/tendermint/issues/3232) Fix infinite loop leading to addrbook deadlock for seed nodes
-- [p2p] [\#3247](https://github.com/tendermint/tendermint/issues/3247) Fix panic in SeedMode when calling FlushStop and OnStop concurrently
-- [p2p] [\#3040](https://github.com/tendermint/tendermint/issues/3040) Fix MITM on secret connection by checking low-order points
+- [node] [\#3194](https://github.com/tendermint/tendermint/pull/3194) EventBus and indexerService should be started before first block (for replay last block on handshake) execution (@ackratos)
+- [p2p] [\#3247](https://github.com/tendermint/tendermint/pull/3247) Fix panic in SeedMode when calling FlushStop and OnStop concurrently
+- [p2p] [\#3040](https://github.com/tendermint/tendermint/pull/3040) Fix MITM on secret connection by checking low-order points
+- [mempool] [\#3221](https://github.com/tendermint/tendermint/pull/3221) Correct args order in the log msg
 
-## Backport from v0.29.1
+## Backported from v0.29.1
 
 ### IMPROVEMENTS:
 
-- [pex] [\#3037](https://github.com/tendermint/tendermint/issues/3037) Only log "Reached max attempts to dial" once
-- [rpc] [\#3159](https://github.com/tendermint/tendermint/issues/3159) Expose triggered_timeout_commit in the /dump_consensus_state
+- [pex] [\#3144](https://github.com/tendermint/tendermint/pull/3144) Only log "Reached max attempts to dial" once
+- [rpc] [\#3197](https://github.com/tendermint/tendermint/pull/3197) Expose triggered_timeout_commit in the /dump_consensus_state
 
 
 ### BUG FIXES:
 
-- [consensus] [\#3199](https://github.com/tendermint/tendermint/issues/3199) Fix consensus halt with no empty blocks from not resetting triggeredTimeoutCommit
-- [p2p] [\#2967](https://github.com/tendermint/tendermint/issues/2967) Fix file descriptor leak
+- [consensus] [\#3197](https://github.com/tendermint/tendermint/pull/3197) Fix consensus halt with no empty blocks from not resetting triggeredTimeoutCommit
+- [p2p] [\#3150](https://github.com/tendermint/tendermint/pull/3150) Fix file descriptor leak
 
-## Backport from v0.29.0
+## Backported from v0.29.0
 
 ### BUG FIXES:
 
-- [mempool] [\#3168](https://github.com/tendermint/tendermint/issues/3168) Limit tx size to fit in the max reactor msg size
+- [mempool] [\#3168](https://github.com/tendermint/tendermint/pull/3168) Limit tx size to fit in the max reactor msg size
 
 ## Can't be backported from v0.28.1 (breaks replay)
 
@@ -56,7 +57,7 @@
 
 - [consensus] [\#3286](https://github.com/tendermint/tendermint/pull/3286) Fix consensus halt from proposing blocks with too much evidence
 
-## Backport from v0.28.0
+## Backported from v0.28.0
 
 ### IMPROVEMENTS:
 
