@@ -1,5 +1,79 @@
 # Changelog
 
+## Hacks that haven't been pushed upstream
+
+### IMPROVEMENTS:
+
+- [rpc] [\#2](https://github.com/mattkanwisher/tendermint/pull/2) Add `mempool_txs` RPC endpoint that provides extra info about the mempool
+- [p2p] [\#1](https://github.com/mattkanwisher/tendermint/pull/1) Support custom consensus reactors
+- [db] Export the constructor of the wrapped GoLevelDB iterator
+- [rpc] Tweak default timeouts
+- [mempool] Add metrics for tx in cache errors
+
+### BUG FIXES:
+
+- [mempool] [\#3](https://github.com/mattkanwisher/tendermint/pull/3) Evict txs from the mempool if they haven't been committed after `N` blocks
+
+## Backported from v0.30.1
+
+### BUG FIXES:
+
+- [consensus] [\#3297](https://github.com/tendermint/tendermint/pull/3297) Flush WAL on stop to prevent data corruption during graceful shutdown.
+- [consensus] [\#3310](https://github.com/tendermint/tendermint/pull/3310) Fix possible halt by resetting TriggeredTimeoutPrecommit before starting next height.
+- [p2p] [\#3347](https://github.com/tendermint/tendermint/pull/3347) Secret connection check all zeroes
+- [p2p] [\#3321](https://github.com/tendermint/tendermint/pull/3321) Authenticate a peer against its NetAddress.ID when dialing
+
+## Backported from v0.29.2
+
+### BUG FIXES:
+
+- [node] [\#3194](https://github.com/tendermint/tendermint/pull/3194) EventBus and indexerService should be started before first block (for replay last block on handshake) execution (@ackratos)
+- [p2p] [\#3247](https://github.com/tendermint/tendermint/pull/3247) Fix panic in SeedMode when calling FlushStop and OnStop concurrently
+- [p2p] [\#3040](https://github.com/tendermint/tendermint/pull/3040) Fix MITM on secret connection by checking low-order points
+- [mempool] [\#3221](https://github.com/tendermint/tendermint/pull/3221) Correct args order in the log msg
+
+## Backported from v0.29.1
+
+### IMPROVEMENTS:
+
+- [pex] [\#3144](https://github.com/tendermint/tendermint/pull/3144) Only log "Reached max attempts to dial" once
+- [rpc] [\#3197](https://github.com/tendermint/tendermint/pull/3197) Expose triggered_timeout_commit in the /dump_consensus_state
+
+
+### BUG FIXES:
+
+- [consensus] [\#3197](https://github.com/tendermint/tendermint/pull/3197) Fix consensus halt with no empty blocks from not resetting triggeredTimeoutCommit
+- [p2p] [\#3150](https://github.com/tendermint/tendermint/pull/3150) Fix file descriptor leak
+
+## Backported from v0.29.0
+
+### BUG FIXES:
+
+- [mempool] [\#3168](https://github.com/tendermint/tendermint/pull/3168) Limit tx size to fit in the max reactor msg size
+
+## Can't be backported from v0.28.1 (breaks replay)
+
+### BUG FIXES:
+
+- [consensus] [\#3286](https://github.com/tendermint/tendermint/pull/3286) Fix consensus halt from proposing blocks with too much evidence
+
+## Backported from v0.28.0
+
+### IMPROVEMENTS:
+
+- [consensus] [\#3086](https://github.com/tendermint/tendermint/issues/3086) Log peerID on ignored votes (@srmo)
+
+### BUG FIXES:
+
+- [p2p/conn] [\#3111](https://github.com/tendermint/tendermint/issues/3111) Make SecretConnection thread safe
+- [rpc] [\#3053](https://github.com/tendermint/tendermint/issues/3053) Fix internal error in /tx_search when results are empty (@gianfelipe93)
+
+## Backported from v0.27.4
+
+### BUG FIXES:
+
+- [mempool] [\#3036](https://github.com/tendermint/tendermint/issues/3036) Fix LRU cache by popping the least recently used item when the cache is full, not the most recently used one!
+
 ## v0.27.3
 
 *December 16th, 2018*
