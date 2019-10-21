@@ -142,6 +142,10 @@ func makeJSONRPCHandler(funcMap map[string]*RPCFunc, cdc *amino.Codec, logger lo
 				return
 			}
 		}
+		if len(args) == 0 && len(rpcFunc.args) > 0 {
+			WriteRPCResponseHTTP(w, types.RPCInvalidParamsError(request.ID, errors.New("Invalid number of params")))
+			return
+		}
 		returns := rpcFunc.f.Call(args)
 		logger.Info("HTTPJSONRPC", "method", request.Method, "args", args, "returns", returns)
 		result, err := unreflectResult(returns)
@@ -646,6 +650,10 @@ func (wsc *wsConnection) readRoutine() {
 			}
 			if err != nil {
 				wsc.WriteRPCResponse(types.RPCInternalError(request.ID, errors.Wrap(err, "Error converting json params to arguments")))
+				continue
+			}
+			if len(args) == 0 && len(rpcFunc.args) > 0 {
+				wsc.WriteRPCResponse(types.RPCInvalidParamsError(request.ID, errors.New("Invalid number of params")))
 				continue
 			}
 			returns := rpcFunc.f.Call(args)
